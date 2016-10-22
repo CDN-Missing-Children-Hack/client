@@ -1,9 +1,11 @@
 ﻿using System;
+using Xamarin.Forms;
+
 namespace MSC.IRIS.ViewModels
 {
-    public class CaseDetailsPageViewModel
+    public class CaseDetailsPageViewModel : ViewModelBase
     {
-        public CaseDetailsPageViewModel ()
+        public CaseDetailsPageViewModel (INavigation navigation) : base (navigation)
         {
         }
     }

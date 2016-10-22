@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using MSC.IRIS.ViewModels;
 using Xamarin.Forms;
 
 namespace MSC.IRIS
@@ -10,11 +10,9 @@ namespace MSC.IRIS
         public LoginPage ()
         {
             InitializeComponent ();
-        }
 
-        public void OnLoginButtonClicked(object sender, EventArgs args)
-        {
-            //Navigate to CasesPage
+            // set the binding context for datababinding
+            this.BindingContext = new LoginPageViewModel (this.Navigation);
         }
     }
 }
