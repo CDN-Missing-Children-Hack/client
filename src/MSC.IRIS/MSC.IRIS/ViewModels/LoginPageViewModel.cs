@@ -12,6 +12,7 @@ namespace MSC.IRIS.ViewModels
     {
         public LoginPageViewModel (INavigation navigation) : base(navigation)
         {
+            this.Title = "Login";
         }
 
         private string _Username = null;

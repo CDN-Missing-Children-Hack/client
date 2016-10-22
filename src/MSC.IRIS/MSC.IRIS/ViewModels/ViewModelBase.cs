@@ -45,6 +45,25 @@ namespace MSC.IRIS.ViewModels
             }
         }
 
+        private string _Title = null;
+
+        /// <summary>
+        /// Sets and gets the Title property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public string Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                _Title = value;
+                OnPropertyChanged ();
+            }
+        }
+
         /// <summary>
         /// Occurs when property changed.
         /// </summary>
