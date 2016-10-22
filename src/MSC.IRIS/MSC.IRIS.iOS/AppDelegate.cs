@@ -25,7 +25,24 @@ namespace MSC.IRIS.iOS
 			global::Xamarin.Forms.Forms.Init ();
 			LoadApplication (new MSC.IRIS.App ());
 
+			// if the device is ios9 + enable push notifications
+			if (UIDevice.CurrentDevice.CheckSystemVersion(9, 0))
+			{
+				var pushSettings = UIUserNotificationSettings.GetSettingsForTypes(
+								   UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
+								   new NSSet());
+
+				UIApplication.SharedApplication.RegisterUserNotificationSettings(pushSettings);
+				UIApplication.SharedApplication.RegisterForRemoteNotifications();
+			}
+
+
+
+
 			return base.FinishedLaunching (app, options);
 		}
+
+
+
 	}
 }
