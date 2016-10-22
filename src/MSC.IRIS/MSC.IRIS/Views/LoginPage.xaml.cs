@@ -11,5 +11,10 @@ namespace MSC.IRIS
         {
             InitializeComponent ();
         }
+
+        public void OnLoginButtonClicked(object sender, EventArgs args)
+        {
+            //Navigate to CasesPage
+        }
     }
 }
