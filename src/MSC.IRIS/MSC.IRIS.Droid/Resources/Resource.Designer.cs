@@ -27,7 +27,6 @@ namespace MSC.IRIS.Droid
 		public static void UpdateIdValues()
 		{
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::MSC.IRIS.Droid.Resource.Attribute.actionBarSize;
-			global::Gcm.Client.Resource.String.library_name = global::MSC.IRIS.Droid.Resource.String.library_name;
 		}
 		
 		public partial class Animation
@@ -2100,64 +2099,64 @@ namespace MSC.IRIS.Droid
 			public const int ic_expand_00015 = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int ic_launcher = 2130837631;
+			public const int ic_media_pause = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int ic_media_pause = 2130837632;
+			public const int ic_media_play = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int ic_media_play = 2130837633;
+			public const int ic_media_route_disabled_mono_dark = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int ic_media_route_disabled_mono_dark = 2130837634;
+			public const int ic_media_route_off_mono_dark = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int ic_media_route_off_mono_dark = 2130837635;
+			public const int ic_media_route_on_0_mono_dark = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int ic_media_route_on_0_mono_dark = 2130837636;
+			public const int ic_media_route_on_1_mono_dark = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int ic_media_route_on_1_mono_dark = 2130837637;
+			public const int ic_media_route_on_2_mono_dark = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int ic_media_route_on_2_mono_dark = 2130837638;
+			public const int ic_media_route_on_mono_dark = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int ic_media_route_on_mono_dark = 2130837639;
+			public const int ic_pause_dark = 2130837639;
 			
 			// aapt resource value: 0x7f020088
-			public const int ic_pause_dark = 2130837640;
+			public const int ic_pause_light = 2130837640;
 			
 			// aapt resource value: 0x7f020089
-			public const int ic_pause_light = 2130837641;
+			public const int ic_play_dark = 2130837641;
 			
 			// aapt resource value: 0x7f02008a
-			public const int ic_play_dark = 2130837642;
+			public const int ic_play_light = 2130837642;
 			
 			// aapt resource value: 0x7f02008b
-			public const int ic_play_light = 2130837643;
+			public const int ic_speaker_dark = 2130837643;
 			
 			// aapt resource value: 0x7f02008c
-			public const int ic_speaker_dark = 2130837644;
+			public const int ic_speaker_group_dark = 2130837644;
 			
 			// aapt resource value: 0x7f02008d
-			public const int ic_speaker_group_dark = 2130837645;
+			public const int ic_speaker_group_light = 2130837645;
 			
 			// aapt resource value: 0x7f02008e
-			public const int ic_speaker_group_light = 2130837646;
+			public const int ic_speaker_light = 2130837646;
 			
 			// aapt resource value: 0x7f02008f
-			public const int ic_speaker_light = 2130837647;
+			public const int ic_tv_dark = 2130837647;
 			
 			// aapt resource value: 0x7f020090
-			public const int ic_tv_dark = 2130837648;
+			public const int ic_tv_light = 2130837648;
 			
 			// aapt resource value: 0x7f020091
-			public const int ic_tv_light = 2130837649;
+			public const int Icon = 2130837649;
 			
 			// aapt resource value: 0x7f020092
-			public const int Icon = 2130837650;
+			public const int logo = 2130837650;
 			
 			// aapt resource value: 0x7f020093
 			public const int mr_dialog_material_background_dark = 2130837651;
@@ -2986,9 +2985,6 @@ namespace MSC.IRIS.Droid
 			// aapt resource value: 0x7f060024
 			public const int abc_toolbar_collapse_description = 2131099684;
 			
-			// aapt resource value: 0x7f060027
-			public const int app_name = 2131099687;
-			
 			// aapt resource value: 0x7f06000f
 			public const int appbar_scrolling_view_behavior = 2131099663;
 			
@@ -2997,9 +2993,6 @@ namespace MSC.IRIS.Droid
 			
 			// aapt resource value: 0x7f060011
 			public const int character_counter_pattern = 2131099665;
-			
-			// aapt resource value: 0x7f060026
-			public const int library_name = 2131099686;
 			
 			// aapt resource value: 0x7f060000
 			public const int mr_button_content_description = 2131099648;

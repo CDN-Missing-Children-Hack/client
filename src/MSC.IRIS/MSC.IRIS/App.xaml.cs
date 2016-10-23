@@ -13,7 +13,7 @@ namespace MSC.IRIS
 		{
 			InitializeComponent();
 
-            MainPage = new MSC.IRIS.LoginPage();
+            MainPage = new NavigationPage (new MSC.IRIS.LoginPage ());
 		}
 
 		protected override void OnStart ()

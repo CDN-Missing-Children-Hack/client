@@ -1,10 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MSC.IRIS.App">
+             x:Class="MSC.IRIS.App"
+		xmlns:redbit="clr-namespace:RedBit.Mobile.Forms">
 	<Application.Resources>
+		<ResourceDictionary>
+			<!--CONVERTERS-->
+			<redbit:BooleanNegationConverter x:Key="booleanConverter" />
 
-		<!-- Application resource dictionary -->
-
+			<!-- COLORS -->
+			<Color x:Key="pageBackgroundColor">#f0f0f0</Color>
+			<Color x:Key="successColor">#00C4B8</Color>
+			<Color x:Key="dangerColor">#EA4443</Color>
+			<Color x:Key="warningColor">#EAE46E</Color>
+			
+		</ResourceDictionary>
 	</Application.Resources>
 </Application>
