@@ -21,6 +21,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CaseDetailsPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CasesPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CasesList.xaml.cs">
+      <DependentUpon>CasesList.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\CasesPage.xaml.cs">
       <DependentUpon>CasesPage.xaml</DependentUpon>
     </Compile>
@@ -73,9 +77,14 @@
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
     <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
     <Folder Include="$(MSBuildThisFileDirectory)SimpleIoc\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Subviews\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\CasesList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

@@ -80,7 +80,20 @@ namespace MSC.IRIS.Models
 
                 // parse the data if status code is OK
                 if (resp.StatusCode == HttpStatusCode.OK)
-                    ret = JsonConvert.DeserializeObject<List<Case>> (resp.Content);
+                {
+                    ret = JsonConvert.DeserializeObject<List<Case>>(resp.Content);
+                    // HACK : this is not sent by server so we'll hack this together since we are at a hackathon :)
+                    if(ret.Count > 4)
+                    {
+                        ret[0].IsWatched = true;
+                        ret[1].IsWatched = true;
+
+                        // TODO: need to do better checking for this :)
+                        ret[ret.Count - 500].IsArchived = true;
+                        ret[ret.Count - 501].IsArchived = true;
+                    }
+
+                }
 
             }
             catch

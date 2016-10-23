@@ -1,16 +1,23 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Ioc;
 using MSC.IRIS.Models;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace MSC.IRIS.ViewModels
 {
     public class CasesPageViewModel : ViewModelBase
     {
-        public CasesPageViewModel (INavigation navigation) : base (navigation)
+        public enum CASE_TYPE { OPEN, ARCHIVED };
+
+        public CASE_TYPE CaseType { get; set; }
+
+        public CasesPageViewModel(INavigation navigation) : base(navigation)
         {
+            CaseType = CASE_TYPE.OPEN;
             this.Title = "Cases";
         }
 
@@ -52,6 +59,9 @@ namespace MSC.IRIS.ViewModels
             }
         }
 
+        public List<Models.Case> Open { get; set; }
+        public List<Models.Case> Archived { get; set; }
+
         private ObservableCollection<Case> _Cases = null;
 
         /// <summary>
@@ -91,9 +101,14 @@ namespace MSC.IRIS.ViewModels
                                               {
                                                   // get the API
                                                   var resp = await this.Api.GetCases(this.User);
-
+                                                  
+                                                  // filter some more in the lists
+                                                  this.Archived = resp.Where(t => t.IsArchived).ToList();
+                                                  this.Open = resp.Where(t => !t.IsArchived).ToList();
+                                                  
                                                   // set the collection property to update the API
                                                   this.Cases = new ObservableCollection<Case>(resp);
+
                                               }
                                               finally
                                                 {

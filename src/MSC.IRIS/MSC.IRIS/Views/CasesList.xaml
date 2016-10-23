@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MSC.IRIS.Views.CasesList">
+  <ListView
+              HasUnevenRows="True"
+              CachingStrategy="RecycleElement"
+              IsPullToRefreshEnabled="True"
+              RowHeight="66"
+              RefreshCommand="{Binding GetCasesCommand}"
+              IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+              x:Name="casesList">
+    <ListView.SeparatorColor>
+      <OnPlatform x:TypeArguments="Color" iOS="Transparent"/>
+    </ListView.SeparatorColor>
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+            <Image HeightRequest="44"
+                   WidthRequest="44"
+                   Source="{Binding ProfilePic}"/>
+            <StackLayout Padding="10" Spacing="5">
+              <Label Text="{Binding AccountName}" FontSize="12" />
+              <Label Text="{Binding Location}" FontSize="12" />
+              <Label Text="{Binding LastUpdate}" FontSize="12" />
+            </StackLayout>
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+</ContentPage>

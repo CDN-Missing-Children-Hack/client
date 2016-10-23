@@ -12,6 +12,10 @@ namespace MSC.IRIS.Models
         public string Id { get; set; }
         [JsonProperty("registered_account_id")]
         public string RegisteredAccountId { get; set; }
+        // TODO : need to really implement this
+        public bool IsOpen { get; set; }
+        // TODO : need to really implement this
+        public bool IsWatched { get; set; }
         [JsonProperty ("is_archived")]
         public bool IsArchived { get; set; }
         [JsonProperty ("archived_by")]
