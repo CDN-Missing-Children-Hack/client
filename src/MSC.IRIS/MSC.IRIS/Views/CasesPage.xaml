@@ -7,7 +7,7 @@
 		Title="{Binding Title}"
 		BackgroundColor="{StaticResource pageBackgroundColor}">
 
-    <local:CasesList Title="Open" Icon="Icon.png" CaseType="OPEN"/>
-    <local:CasesList Title="Archived" Icon="Icon.png" CaseType="ARCHIVED" />
+    <local:CasesList Title="Open" CaseType="OPEN"/>
+    <local:CasesList Title="Archived" CaseType="ARCHIVED" />
  
 </TabbedPage>

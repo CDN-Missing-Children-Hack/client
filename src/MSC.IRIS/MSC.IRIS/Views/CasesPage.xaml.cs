@@ -9,13 +9,12 @@ namespace MSC.IRIS
     {
         public CasesPage ()
         {
+            NavigationPage.SetHasBackButton (this, false);
 
             InitializeComponent ();
 
             // set the binding context
-           // this.BindingContext = ViewModelLocator.Default.GetViewModel<CasesPageViewModel> ();
-
-           
+            this.BindingContext = ViewModelLocator.Default.GetViewModel<CasesPageViewModel> ();
         }
 
     }
