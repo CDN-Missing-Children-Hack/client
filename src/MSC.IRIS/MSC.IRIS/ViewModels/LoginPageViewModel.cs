@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using GalaSoft.MvvmLight.Ioc;
 using Xamarin.Forms;
 
 namespace MSC.IRIS.ViewModels
@@ -89,7 +90,7 @@ namespace MSC.IRIS.ViewModels
                 return _LoginButtonTappedCommand
                     ?? (_LoginButtonTappedCommand = new Command (async () =>
                 {
-                    System.Diagnostics.Debug.WriteLine ($"Running {nameof (LoginButtonTappedCommand)}");
+                    Log($"Running {nameof (LoginButtonTappedCommand)}");
                     this.IsBusy = true;
                     this.ErrorText = string.Empty;
                     try
@@ -99,13 +100,20 @@ namespace MSC.IRIS.ViewModels
                         if (user == null)
                         {
                             // there was some issue
-                            System.Diagnostics.Debug.WriteLine ($"Unable to authenticate user {this.Username}");
+                            Log ($"Unable to authenticate user {this.Username}");
                             this.ErrorText = $"Unable to authenticate user {this.Username}";
                         }
                         else
                         {
                             // we are good!
-                            System.Diagnostics.Debug.WriteLine ("Authenticated {this.Username}");
+                            Log ("Authenticated {this.Username}");
+
+                            // setup the next VM
+                            var vm = SimpleIoc.Default.GetInstance<CasesPageViewModel> ();
+                            vm.User = user;
+                            vm.GetCasesCommand.Execute (null);
+
+                            // navigate to the cases page
                             await this.Navigation.PushAsync (new CasesPage ());
 
                             // clear out the username/password
@@ -116,6 +124,7 @@ namespace MSC.IRIS.ViewModels
                     finally
                     {
                         IsBusy = false;
+                        Log ($"Done running {nameof (LoginButtonTappedCommand)}");
                     }
                 }));
             }

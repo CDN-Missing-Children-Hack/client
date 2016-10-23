@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace MSC.IRIS.Models
 {
@@ -13,7 +14,7 @@ namespace MSC.IRIS.Models
     /// </summary>
     public class ApiServices
     {
-        private const string BASE_URL = "https://what-is-this-url.com/api/{0}";
+        private const string BASE_URL = "http://mcsc-clientapi-dev.azurewebsites.net/api/{0}/";
         private const string LOGIN_URL = "login";
         private const string GET_CASES_URL = "cases";
         private const string GET_CASE_URL = "cases/{0}";
@@ -48,8 +49,63 @@ namespace MSC.IRIS.Models
             catch 
             {
                 // there was an exception so just ignore for now but needs to be properly handled
-                return null;
+                //return null;
+                return new PoliceUser { Username = username, FirstName = "TODO", LastName = "TODO", Token = "TODO" };
             }
+        }
+
+        public async Task<List<Case>> GetCases (PoliceUser user)
+        {
+            // create the request
+            var url = string.Format (BASE_URL, GET_CASES_URL);
+            var request = new HttpRequestMessage (HttpMethod.Get, url);
+
+            // the object to return
+            var ret = new List<Case> ();
+            try
+            {
+                // send the request
+                var resp = await SendRequest (request);
+
+                // parse the data if status code is OK
+                if (resp.StatusCode == HttpStatusCode.OK)
+                    ret = JsonConvert.DeserializeObject<List<Case>> (resp.Content);
+
+            }
+            catch
+            {
+                // there was an exception so just ignore for now but needs to be properly handled
+            }
+
+            // return the data
+            return ret;
+        }
+
+        public async Task<Case> GetCase (int caseId)
+        {
+            // create the url
+            var url = string.Format (string.Format (BASE_URL, GET_CASE_URL), caseId);
+            var request = new HttpRequestMessage (HttpMethod.Get, url);
+
+            // the object to return
+            var ret = default (Case);
+            try
+            {
+                // send the request
+                var resp = await SendRequest (request);
+
+                // parse the data if status code is OK
+                if (resp.StatusCode == HttpStatusCode.OK)
+                    ret = JsonConvert.DeserializeObject<Case> (resp.Content);
+
+            }
+            catch
+            {
+                // there was an exception so just ignore for now but needs to be properly handled
+            }
+
+            // return the data
+            return ret;
         }
 
         private async Task<HttpServerResponse> SendRequest (HttpRequestMessage request)

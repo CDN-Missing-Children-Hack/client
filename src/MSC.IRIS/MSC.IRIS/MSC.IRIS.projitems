@@ -36,6 +36,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MapPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BooleanNegationConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SimpleIoc\ISimpleIoc.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SimpleIoc\SimpleIoc.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModelLocator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SimpleIoc\PreferredConstructorAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">
@@ -64,5 +68,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
     <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
+    <Folder Include="$(MSBuildThisFileDirectory)SimpleIoc\" />
   </ItemGroup>
 </Project>

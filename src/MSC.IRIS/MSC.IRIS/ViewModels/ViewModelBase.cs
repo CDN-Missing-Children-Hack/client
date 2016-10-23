@@ -64,6 +64,12 @@ namespace MSC.IRIS.ViewModels
             }
         }
 
+
+        internal virtual void Log (string data)
+        {
+            System.Diagnostics.Debug.Write ($"{DateTime.Now.ToString ("ddMMyyyyhhmmssfff")}: {data}");
+        }
+
         /// <summary>
         /// Occurs when property changed.
         /// </summary>
