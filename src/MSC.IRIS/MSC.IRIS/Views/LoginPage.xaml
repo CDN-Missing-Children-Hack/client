@@ -3,14 +3,61 @@
 		xmlns="http://xamarin.com/schemas/2014/forms" 
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 		x:Class="MSC.IRIS.LoginPage"
-		Title="{Binding Title}">
-  <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-    <Label Text="Username" />
-    <Entry Text="{Binding Username}" Placeholder="username" WidthRequest="200" />
-    <Label Text="Password" />
-    <Entry Text="{Binding Password}" IsPassword="true"  WidthRequest="200" />
-    <Button Text="Login" Command="{Binding LoginButtonTappedCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource booleanConverter}}" />
-	<ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
-	<Label Text="{Binding ErrorText}" TextColor="Red" />
-  </StackLayout>
+		Title="{Binding Title}" 
+		BackgroundColor="{StaticResource pageBackgroundColor}">
+		<ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+				RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                Property=Width,
+                                Factor=1}"
+     			RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                Property=Height,
+                                Factor=1}" >
+			<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="15,30,15,0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto"/>
+				    <RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				    <RowDefinition Height="*" />
+					<RowDefinition Height="Auto" />
+			    </Grid.RowDefinitions>
+
+				<!-- LOGO -->
+				<Image Aspect="AspectFill" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+					Source="logo.png" WidthRequest="100" HeightRequest="109" />
+			
+				<!--USERNAME-->
+				<StackLayout Grid.Row="1" Orientation="Vertical" Spacing="5" HorizontalOptions="FillAndExpand">
+					<Label Text="Username" />
+					<Entry
+						Keyboard="Text"
+						Text="{Binding Username}" Placeholder="username" 
+						IsEnabled="{Binding IsBusy, Converter={StaticResource booleanConverter}}" />
+				</StackLayout>
+
+				<!--PASSWORD-->
+				<StackLayout Grid.Row="2" Orientation="Vertical" Spacing="5" HorizontalOptions="FillAndExpand">
+					<Label Text="Password" />
+					<Entry 
+						Keyboard="Text"
+						Text="{Binding Password}" IsPassword="true" Placeholder="password"
+						IsEnabled="{Binding IsBusy, Converter={StaticResource booleanConverter}}"/>
+				</StackLayout>
+
+				<!-- Activity Indicator -->
+				<ActivityIndicator Grid.Row="3" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+
+				<!-- Error message -->
+				<Label Grid.Row="4" FontSize="12" HorizontalTextAlignment="Center"
+					Text="{Binding ErrorText}" TextColor="{StaticResource dangerColor}" />
+				
+			    <!-- Login Button -->
+				<Button Grid.Row="6"
+					Text="Login" 
+					Command="{Binding LoginButtonTappedCommand}" 
+					IsEnabled="{Binding IsBusy, Converter={StaticResource booleanConverter}}" />
+			
+	  		</Grid>
+		</ScrollView>
 </ContentPage>

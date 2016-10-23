@@ -7,6 +7,13 @@
 		<ResourceDictionary>
 			<!--CONVERTERS-->
 			<redbit:BooleanNegationConverter x:Key="booleanConverter" />
+
+			<!-- COLORS -->
+			<Color x:Key="pageBackgroundColor">#f0f0f0</Color>
+			<Color x:Key="successColor">#00C4B8</Color>
+			<Color x:Key="dangerColor">#EA4443</Color>
+			<Color x:Key="warningColor">#EAE46E</Color>
+			
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

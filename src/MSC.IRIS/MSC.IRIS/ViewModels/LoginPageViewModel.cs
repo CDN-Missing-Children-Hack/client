@@ -91,6 +91,19 @@ namespace MSC.IRIS.ViewModels
                     ?? (_LoginButtonTappedCommand = new Command (async () =>
                 {
                     Log($"Running {nameof (LoginButtonTappedCommand)}");
+
+                    // check to see user entered something
+                    if (string.IsNullOrEmpty (this.Username))
+                    {
+                        this.ErrorText = "Please type in a username";
+                        return;
+                    }
+                    if (string.IsNullOrEmpty (this.Password))
+                    {
+                        this.ErrorText = "Please type in a password";
+                        return;
+                    }
+
                     this.IsBusy = true;
                     this.ErrorText = string.Empty;
                     try

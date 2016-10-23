@@ -41,17 +41,20 @@ namespace MSC.IRIS.Models
             try
             {
                 // send the request
-                await SendRequest (request);
+                var ret = await SendRequest (request);
 
                 // compose a police user to return
-                return new PoliceUser { Username = username, FirstName = "TODO", LastName = "TODO", Token = "TODO" };
+                if (ret.StatusCode == HttpStatusCode.OK)
+                    return new PoliceUser { Username = username, FirstName = "TODO", LastName = "TODO", Token = "TODO" };
             }
             catch 
             {
                 // there was an exception so just ignore for now but needs to be properly handled
-                //return null;
-                return new PoliceUser { Username = username, FirstName = "TODO", LastName = "TODO", Token = "TODO" };
+                //return new PoliceUser { Username = username, FirstName = "TODO", LastName = "TODO", Token = "TODO" };
             }
+
+            // if we get here just return null
+            return null;
         }
 
         public async Task<List<Case>> GetCases (PoliceUser user)
