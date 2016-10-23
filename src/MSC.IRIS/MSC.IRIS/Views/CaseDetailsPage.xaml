@@ -3,18 +3,46 @@
 		xmlns="http://xamarin.com/schemas/2014/forms" 
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 		x:Class="MSC.IRIS.CaseDetailsPage" 
+		xmlns:views="clr-namespace:MSC.IRIS"
 		Title="{Binding Title}" 
 		BackgroundColor="{StaticResource pageBackgroundColor}">
-	<ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
-		<StackLayout Orientation="Horizontal" Padding="10,0,0,0">
-            <Image HeightRequest="44" 
-                   WidthRequest="44" 
-                   Source="{Binding Case.ProfilePic}"/>
-            <StackLayout Padding="10" Spacing="5">
-                <Label Text="{Binding Case.AccountName}" FontSize="12" />
-                <Label Text="{Binding Case.Location}" FontSize="12" />
-				<Label Text="{Binding Case.LastUpdate}" FontSize="12" />
-            </StackLayout>
-        </StackLayout>
-	</ScrollView>
+		<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />	<!-- details -->
+				<RowDefinition Height="*" />	<!-- list -->
+				<RowDefinition Height="Auto" />	<!-- filter buttons -->
+			</Grid.RowDefinitions>
+
+			<!-- details view -->
+			<views:CaseDetailView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" />
+
+			<!-- list of items -->
+			<ListView Grid.Row="1"
+				ItemsSource="{Binding Case.SocialContent}"
+	              HasUnevenRows="True"
+	              CachingStrategy="RecycleElement"
+	              RowHeight="76"
+	              x:Name="socialContentList">
+		        <ListView.SeparatorColor>
+		            <OnPlatform x:TypeArguments="Color" iOS="Transparent"/>
+		        </ListView.SeparatorColor>
+		        <ListView.ItemTemplate>
+		            <DataTemplate>
+		                <ViewCell>
+		                    <StackLayout Orientation="Horizontal" Padding="10">
+		                        <Image HorizontalOptions="Center" VerticalOptions="Start"
+										HeightRequest="20" 
+		                               WidthRequest="20" 
+		                               Source="{Binding SocialContentImage}"/>
+		                        <StackLayout Padding="0" Spacing="5">
+		                            <Label Text="{Binding Content}" FontSize="12" />
+		                        </StackLayout>
+		                    </StackLayout>
+		                </ViewCell>
+		            </DataTemplate>
+		        </ListView.ItemTemplate>
+		    </ListView>
+			
+			<!-- Show the buttons to switch from list of social content and images -->
+		</Grid>
 </ContentPage>

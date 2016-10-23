@@ -19,14 +19,31 @@ namespace MSC.IRIS.Droid
 
 		protected override void OnCreate (Bundle bundle)
 		{
+
+
+
 			instance = this;
+
+	
+
+			// Set your view from the "main" layout resource
+			//SetContentView(Resource.Layout.Main);
+
+			// Get your button from the layout resource,
+			// and attach an event to it
+			//Button button = FindViewById<Button>(Resource.Id.myButton);
+
+			RegisterWithGCM();
+
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate (bundle);
 
-			RegisterWithGCM();
+
+		
+
 
 
 			global::Xamarin.Forms.Forms.Init (this, bundle);

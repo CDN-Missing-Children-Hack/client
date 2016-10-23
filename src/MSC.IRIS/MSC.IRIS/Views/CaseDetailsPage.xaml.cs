@@ -14,6 +14,13 @@ namespace MSC.IRIS
 
             // setup the databinding
             this.BindingContext = SimpleIoc.Default.GetInstance<CaseDetailsPageViewModel> ();
+
+            // wire up teh tapped event
+            socialContentList.ItemTapped += (sender, args) =>
+            {
+                (this.BindingContext as CaseDetailsPageViewModel).SocialContentItemTappedCommand.Execute (socialContentList.SelectedItem);
+                socialContentList.SelectedItem = null;
+            };
         }
     }
 }

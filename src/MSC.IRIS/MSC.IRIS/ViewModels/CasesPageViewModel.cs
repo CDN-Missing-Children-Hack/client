@@ -33,6 +33,25 @@ namespace MSC.IRIS.ViewModels
             }
         }
 
+        private bool _IsLoading = false;
+
+        /// <summary>
+        /// Sets and gets the IsLoading property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public bool IsLoading
+        {
+            get
+            {
+                return _IsLoading;
+            }
+            set
+            {
+                _IsLoading = value;
+                OnPropertyChanged ();
+            }
+        }
+
         private ObservableCollection<Case> _Cases = null;
 
         /// <summary>
@@ -66,6 +85,8 @@ namespace MSC.IRIS.ViewModels
                                           {
                                               Log ($"Running {nameof (GetCasesCommand)}");
                                               this.IsBusy = true;
+                                              if (Cases == null || Cases.Count == 0)
+                                                this.IsLoading = true;
                                               try
                                               {
                                                   // get the API
@@ -75,9 +96,10 @@ namespace MSC.IRIS.ViewModels
                                                   this.Cases = new ObservableCollection<Case>(resp);
                                               }
                                               finally
-                                              {
+                                                {
                                                   Log ($"Done running {nameof (GetCasesCommand)}");
                                                   this.IsBusy = false;
+                                                  this.IsLoading = false;
                                               }
                                           }));
             }

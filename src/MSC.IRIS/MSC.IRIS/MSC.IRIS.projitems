@@ -42,6 +42,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModelLocator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SimpleIoc\PreferredConstructorAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SocialContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Subviews\CaseDetailView.xaml.cs">
+      <DependentUpon>CaseDetailView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">
@@ -60,6 +63,9 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MapPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Subviews\CaseDetailView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)GettingStarted.Xamarin" />
@@ -71,5 +77,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
     <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
     <Folder Include="$(MSBuildThisFileDirectory)SimpleIoc\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Subviews\" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="MSC.IRIS.CaseDetailView">
+	<StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+            <Image HeightRequest="44" 
+                   WidthRequest="44" 
+                   Source="{Binding Case.ProfilePic}"/>
+            <StackLayout Padding="10" Spacing="5">
+                <Label Text="{Binding Case.AccountName}" FontSize="12" />
+                <Label Text="{Binding Case.Location}" FontSize="12" />
+				<Label Text="{Binding Case.LastUpdate}" FontSize="12" />
+            </StackLayout>
+        </StackLayout>
+</ContentView>

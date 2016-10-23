@@ -60,6 +60,7 @@ namespace MSC.IRIS.iOS
 				//Get the aps dictionary
 				NSDictionary aps = options.ObjectForKey(new NSString("aps")) as NSDictionary;
 
+
 				string alert = string.Empty;
 
 				//Extract the alert text
@@ -127,6 +128,9 @@ namespace MSC.IRIS.iOS
 						Console.WriteLine("RegisterNativeAsync error: " + errorCallback.ToString());
 				});
 			});
+
 		}
+
+
 	}
 }

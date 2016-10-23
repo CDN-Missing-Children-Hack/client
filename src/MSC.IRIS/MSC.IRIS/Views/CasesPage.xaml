@@ -5,33 +5,42 @@
 		x:Class="MSC.IRIS.CasesPage" 
 		Title="{Binding Title}"
 		BackgroundColor="{StaticResource pageBackgroundColor}">
-	<ListView
-			ItemsSource="{Binding Cases}"
-              HasUnevenRows="True"
-              CachingStrategy="RecycleElement"
-              IsPullToRefreshEnabled="True"
-              RowHeight="66"
-              RefreshCommand="{Binding GetCasesCommand}"
-              IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-              x:Name="casesList">
-        <ListView.SeparatorColor>
-            <OnPlatform x:TypeArguments="Color" iOS="Transparent"/>
-        </ListView.SeparatorColor>
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
-                        <Image HeightRequest="44" 
-                               WidthRequest="44" 
-                               Source="{Binding ProfilePic}"/>
-                        <StackLayout Padding="10" Spacing="5">
-                            <Label Text="{Binding AccountName}" FontSize="12" />
-                            <Label Text="{Binding Location}" FontSize="12" />
-							<Label Text="{Binding LastUpdate}" FontSize="12" />
-                        </StackLayout>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+	<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+		
+
+		<!-- ListView -->
+		<ListView
+				ItemsSource="{Binding Cases}"
+	              HasUnevenRows="True"
+	              CachingStrategy="RecycleElement"
+	              IsPullToRefreshEnabled="True"
+	              RowHeight="66"
+	              RefreshCommand="{Binding GetCasesCommand}"
+	              IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+	              x:Name="casesList">
+	        <ListView.SeparatorColor>
+	            <OnPlatform x:TypeArguments="Color" iOS="Transparent"/>
+	        </ListView.SeparatorColor>
+	        <ListView.ItemTemplate>
+	            <DataTemplate>
+	                <ViewCell>
+	                    <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+	                        <Image HeightRequest="44" 
+	                               WidthRequest="44" 
+	                               Source="{Binding ProfilePic}"/>
+	                        <StackLayout Padding="10" Spacing="5">
+	                            <Label Text="{Binding AccountName}" FontSize="12" />
+	                            <Label Text="{Binding Location}" FontSize="12" />
+								<Label Text="{Binding LastUpdate}" FontSize="12" />
+	                        </StackLayout>
+	                    </StackLayout>
+	                </ViewCell>
+	            </DataTemplate>
+	        </ListView.ItemTemplate>
+	    </ListView>
+
+		<!-- Activity Indicator -->
+		<ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" 
+			IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"/>
+	</Grid>
 </ContentPage>
