@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using GalaSoft.MvvmLight.Ioc;
 using MSC.IRIS.Models;
 using Xamarin.Forms;
 
@@ -24,7 +25,13 @@ namespace MSC.IRIS.ViewModels
         /// Gets the API service that is used in the system
         /// </summary>
         /// <value>The API.</value>
-        internal ApiServices Api { get; } = new ApiServices ();
+        internal ApiServices Api
+        {
+            get
+            {
+                return SimpleIoc.Default.GetInstance<ApiServices> ();
+            }
+        }
 
         private bool _IsBusy = false;
 

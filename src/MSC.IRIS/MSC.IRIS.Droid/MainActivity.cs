@@ -14,16 +14,17 @@ using Gcm.Client;
 namespace MSC.IRIS.Droid
 {
 	[Activity (Label = "MSC.IRIS", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
+	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
 		public static MainActivity instance;
 
 		protected override void OnCreate (Bundle bundle)
 		{
 
+
 			instance = this;
 
-			base.OnCreate(bundle);
+	
 
 			// Set your view from the "main" layout resource
 			//SetContentView(Resource.Layout.Main);
@@ -33,6 +34,12 @@ namespace MSC.IRIS.Droid
 			//Button button = FindViewById<Button>(Resource.Id.myButton);
 
 			RegisterWithGCM();
+
+            TabLayoutResource = Resource.Layout.Tabbar;
+            ToolbarResource = Resource.Layout.Toolbar;
+
+            base.OnCreate (bundle);
+
 
 			global::Xamarin.Forms.Forms.Init (this, bundle);
 			LoadApplication (new MSC.IRIS.App ());

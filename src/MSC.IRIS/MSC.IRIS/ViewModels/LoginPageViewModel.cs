@@ -109,7 +109,6 @@ namespace MSC.IRIS.ViewModels
                     try
                     {
                         var user = await Api.Login (this.Username, this.Password);
-                        await Task.Delay (2500);
                         if (user == null)
                         {
                             // there was some issue
