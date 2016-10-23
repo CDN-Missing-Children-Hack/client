@@ -40,6 +40,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)SimpleIoc\SimpleIoc.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModelLocator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SimpleIoc\PreferredConstructorAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\SocialContent.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">

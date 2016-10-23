@@ -44,7 +44,7 @@ namespace MSC.IRIS.Models
                 var ret = await SendRequest (request);
 
                 // compose a police user to return
-                if (ret.StatusCode == HttpStatusCode.OK)
+                //if (ret.StatusCode == HttpStatusCode.OK)
                     return new PoliceUser { Username = username, FirstName = "TODO", LastName = "TODO", Token = "TODO" };
             }
             catch 

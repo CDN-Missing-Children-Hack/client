@@ -67,7 +67,7 @@ namespace MSC.IRIS.ViewModels
 
         internal virtual void Log (string data)
         {
-            System.Diagnostics.Debug.Write ($"{DateTime.Now.ToString ("ddMMyyyyhhmmssfff")}: {data}");
+            System.Diagnostics.Debug.WriteLine($"{DateTime.Now.ToString ("ddMMyyyyhhmmssfff")}: {data}");
         }
 
         /// <summary>

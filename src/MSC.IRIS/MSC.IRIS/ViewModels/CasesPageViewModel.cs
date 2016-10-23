@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using GalaSoft.MvvmLight.Ioc;
 using MSC.IRIS.Models;
 using Xamarin.Forms;
 
@@ -10,6 +11,7 @@ namespace MSC.IRIS.ViewModels
     {
         public CasesPageViewModel (INavigation navigation) : base (navigation)
         {
+            this.Title = "Cases";
         }
 
         private PoliceUser _User = null;
@@ -63,7 +65,7 @@ namespace MSC.IRIS.ViewModels
                                           async () =>
                                           {
                                               Log ($"Running {nameof (GetCasesCommand)}");
-
+                                              this.IsBusy = true;
                                               try
                                               {
                                                   // get the API
@@ -75,6 +77,36 @@ namespace MSC.IRIS.ViewModels
                                               finally
                                               {
                                                   Log ($"Done running {nameof (GetCasesCommand)}");
+                                                  this.IsBusy = false;
+                                              }
+                                          }));
+            }
+        }
+
+        private ICommand _CaseSelectedCommand;
+        /// <summary>
+        /// Gets the CaseSelectedCommand.
+        /// </summary>
+        public ICommand CaseSelectedCommand
+        {
+            get
+            {
+                return _CaseSelectedCommand
+                    ?? (_CaseSelectedCommand = new Command<Case> (
+                                          async (item) =>
+                                          {
+                                              Log ($"Running {nameof (CaseSelectedCommand)}");
+                                              try
+                                              {
+                                                  // set the case in the vm
+                                                  SimpleIoc.Default.GetInstance<CaseDetailsPageViewModel>().Case = item;
+
+                                                  // just navigate to the details page
+                                                  await this.Navigation.PushAsync(new CaseDetailsPage());
+                                              }
+                                              finally
+                                              {
+                                                  Log ($"Done running {nameof (CaseSelectedCommand)}");
                                               }
                                           }));
             }

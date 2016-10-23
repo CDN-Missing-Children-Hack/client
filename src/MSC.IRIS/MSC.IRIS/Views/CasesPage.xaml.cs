@@ -11,12 +11,18 @@ namespace MSC.IRIS
         {
             // hide the backbutton
             NavigationPage.SetHasBackButton (this, false);
-            NavigationPage.SetHasNavigationBar (this, false);
 
             InitializeComponent ();
 
             // set the binding context
             this.BindingContext = ViewModelLocator.Default.GetViewModel<CasesPageViewModel> ();
+
+            // wire up teh tapped event
+            casesList.ItemTapped += (sender, args) =>
+            {
+                (this.BindingContext as CasesPageViewModel).CaseSelectedCommand.Execute (casesList.SelectedItem);
+                casesList.SelectedItem = null;
+            };
         }
     }
 }
