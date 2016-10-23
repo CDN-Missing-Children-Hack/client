@@ -109,7 +109,7 @@ namespace MSC.IRIS.iOS
 
 
 
-
+			// If connection string or name is wrong throws an error
 			Hub = new SBNotificationHub(Constants.ConnectionString, Constants.NotificationHubPath);
 
 			Hub.UnregisterAllAsync(deviceToken, (error) =>

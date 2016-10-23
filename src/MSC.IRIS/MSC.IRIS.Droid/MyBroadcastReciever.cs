@@ -46,8 +46,8 @@ namespace MSC.IRIS.Droid
 			Log.Verbose(MyBroadcastReceiver.TAG, "GCM Registered: " + registrationId);
 			RegistrationID = registrationId;
 
-			createNotification("PushHandlerService-GCM Registered...",
-								"The device has been Registered!");
+			//createNotification("PushHandlerService-GCM Registered...",
+			//					"The device has been Registered!");
 
 			Hub = new NotificationHub(Constants.NotificationHubPath, Constants.ConnectionString,
 										context);
@@ -88,7 +88,7 @@ namespace MSC.IRIS.Droid
 			string messageText = intent.Extras.GetString("message");
 			if (!string.IsNullOrEmpty(messageText))
 			{
-				createNotification("New hub message!", messageText);
+				createNotification("Alert!", messageText);
 			}
 			else
 			{
@@ -141,7 +141,7 @@ namespace MSC.IRIS.Droid
 		{
 			Log.Verbose(MyBroadcastReceiver.TAG, "GCM Unregistered: " + registrationId);
 
-			createNotification("GCM Unregistered...", "The device has been unregistered!");
+			//createNotification("GCM Unregistered...", "The device has been unregistered!");
 		}
 
 		protected override bool OnRecoverableError(Context context, string errorId)

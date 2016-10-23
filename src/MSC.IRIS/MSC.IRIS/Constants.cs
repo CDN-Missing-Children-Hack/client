@@ -6,8 +6,9 @@ namespace MSC.IRIS
 		//android
 		public const string SenderID = "395486619176"; // Google API Project Number
 
-		//ios
-		public const string ConnectionString = "Endpoint=sb://missingchildren.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=6w1EEBnt1MfFB2oRHd7fG2V8cnw/sdeZQ9lDxSUqhZk=";
-		public const string NotificationHubPath = "MissingChildrenHub";
+		//azure connection link
+		public const string ConnectionString = "Endpoint=sb://mcscpushhub.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=mKHOhK6Fg91d5rdFbuSHk9OCQ7CTkvD7wmHL462iK/M=";
+		//azure hub name
+		public const string NotificationHubPath = "Notification";
 	}
 }
