@@ -9,9 +9,9 @@ namespace MSC.IRIS.Models
     /// </summary>
     public class Case
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         [JsonProperty("registered_account_id")]
-        public int RegisteredAccountId { get; set; }
+        public string RegisteredAccountId { get; set; }
         [JsonProperty ("is_archived")]
         public bool IsArchived { get; set; }
         [JsonProperty ("archived_by")]
@@ -21,9 +21,9 @@ namespace MSC.IRIS.Models
         [JsonProperty ("created_date")]
         public string CreatedDate { get; set; }
         [JsonProperty ("log")]
-        public double Longitude { get; set; }
+        public double? Longitude { get; set; }
         [JsonProperty ("lat")]
-        public double Latitude { get; set; }
+        public double? Latitude { get; set; }
         public string ProfilePic { get; set; }
         public List<string> photos { get; set; }
         [JsonProperty ("social_content")]
@@ -40,7 +40,7 @@ namespace MSC.IRIS.Models
         {
             get
             {
-                return $"{Latitude}, {Longitude}";
+                return $"{(Latitude.HasValue ? Latitude.Value : 0)}, {(Longitude.HasValue ? Longitude.Value : 0)}";
             }
         }
     }

@@ -18,9 +18,7 @@ namespace MSC.IRIS
 
         private ViewModelLocator ()
         {
-            // set the defaul locator provider
-            ServiceLocator.SetLocatorProvider (() => SimpleIoc.Default);
-
+            
             // Register all the models
             SimpleIoc.Default.Register<LoginPageViewModel> ();
             SimpleIoc.Default.Register<CaseDetailsPageViewModel> ();

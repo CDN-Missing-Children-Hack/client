@@ -20,10 +20,10 @@ namespace MSC.IRIS.Models
         private const string GET_CASE_URL = "cases/{0}";
         private const string WATCH_CASE_URL = "cases/{0}/watch";
 
+        private string _authToken = null;
+
         public async Task<PoliceUser> Login (string username, string password)
         {
-            // TODO : this will have to be refactored depending on the type of auth we do ie OAuth
-
             // compose the data
             var kvps = new [] {
                 new KeyValuePair<string,string>("username", username),
@@ -43,9 +43,17 @@ namespace MSC.IRIS.Models
                 // send the request
                 var ret = await SendRequest (request);
 
-                // compose a police user to return
-                //if (ret.StatusCode == HttpStatusCode.OK)
-                    return new PoliceUser { Username = username, FirstName = "TODO", LastName = "TODO", Token = "TODO" };
+                if (ret.StatusCode == HttpStatusCode.OK)
+                {
+                    // deserilaize the token
+                    var d = JsonConvert.DeserializeObject<PoliceUser> (ret.Content);
+
+                    // save the auth token
+                    this._authToken = d.Token;
+
+                    // return the user object
+                    return d;
+                }
             }
             catch 
             {
@@ -113,6 +121,10 @@ namespace MSC.IRIS.Models
 
         private async Task<HttpServerResponse> SendRequest (HttpRequestMessage request)
         {
+            // add the auth header 
+            if (string.IsNullOrEmpty (_authToken))
+                request.Headers.Add ("AUTHORIZATION", $"bearer {_authToken}");
+
             var client = new HttpClient ();
 
             // send the data
